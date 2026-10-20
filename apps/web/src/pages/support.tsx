@@ -1,21 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
-import { Check, Upload, ShieldAlert, Plus, HeartHandshake, Phone, Square, Download, Bell, Monitor, LockKeyhole, ArrowRight, Palette, RotateCcw, Trash2 } from 'lucide-react';
+import { Check, Upload, ShieldAlert, Plus, Square, Download, Bell, Monitor, LockKeyhole, ArrowRight, Palette, RotateCcw, Trash2 } from 'lucide-react';
 import { useApp, safely, announce } from '../store';
 import { platform, config, drawingService, drawingJobService } from '../composition';
-import { Pet, PageTitle, Badge, Modal, Empty } from '../components';
+import { Pet, PageTitle, Badge, Modal } from '../components';
 import type { Family, Mode } from '@nuanban/domain';
-import { mayViewLearning } from '@nuanban/application';
 import { localArtworkBridge } from '../local-artwork';
 import { ProviderStatusPanel } from '../provider-status';
 export { PetsPage } from './pet-settings';
 export { DrawingPage } from './drawing';
-export function FamilyPage() {
-  return <><PageTitle eyebrow="关系与授权分别确认" title="亲情陪伴" subtitle="真实关系认证和远程协助尚未接通。" /><Empty title="当前没有可用的家属服务" description="已移除合成家属、模拟授权和假邀请。不会通过本机勾选冒充真实家属认证。"><Link className="button secondary" to="/chat/new">返回真实问答</Link></Empty></>;
-}
-export function AssistPage() {
-  return <Empty title="远程协助尚未接通" description="已移除模拟邀请、接听、重连与共享。没有获得真实关系认证和当次许可，不建立连接。"><Link className="button secondary" to="/family">返回亲情陪伴</Link></Empty>;
-}
 const modes=[{id:'elder',title:'长辈模式',description:'大字、慢语速，逐步讲解。',symbol:'☀'},{id:'child',title:'儿童模式',description:'鼓励式陪伴，画一画小伙伴。',symbol:'✳'},{id:'accessible',title:'无障碍模式',description:'大字字幕、减少动态与键盘操作。',symbol:'♡'}] as const;
 export function OnboardingPage(){const preferences=useApp(state=>state.snapshot!.preferences);return <><PageTitle eyebrow="先找到适合自己的节奏" title="你希望暖伴怎样陪你？" subtitle="模式不是身份认证。真实免密登录、监护核验和代注册尚未接入；不会提供模拟登录或认领流程。"/><div className="mode-grid">{modes.map(mode=><button className={'panel mode-card '+(preferences.mode===mode.id?'selected':'')} aria-pressed={preferences.mode===mode.id} key={mode.id} onClick={()=>safely(useApp.getState().preferences({mode:mode.id,reducedMotion:mode.id==='accessible',speechRate:mode.id==='child'?0.9:0.75,fontScale:mode.id==='accessible'?1.1:1}))}><span>{mode.symbol}</span><h2>{mode.title}</h2><p>{mode.description}</p>{preferences.mode===mode.id&&<Badge tone="sage">正在使用</Badge>}</button>)}</div><section className="panel onboarding-note"><LockKeyhole size={28}/><div><h2>这是本机工作区，不是账号登录成功。</h2><p>不会收取人脸、手机号、验证码或运营商凭证。儿童真实数据处理须完成监护方案评审。</p></div><Link to="/onboarding/login" className="button secondary">查看账号服务状态</Link><Link to="/" className="button primary">进入首页 <ArrowRight size={20}/></Link></section></>;}
 export function SettingsPage(){
