@@ -35,7 +35,7 @@
 .home-start-copy h2 {
   margin: 0 0 12px;
   font-family: 'STKaiti', 'KaiTi', 'Noto Serif CJK SC', serif;
-  font-size: 34px;
+  font-size: calc(34px * var(--font-scale, 1));
   line-height: 1.5;
   letter-spacing: 1px;
 }
@@ -43,7 +43,7 @@
 .home-start-copy p {
   max-width: 540px;
   margin-bottom: 22px;
-  font-size: 15px;
+  font-size: calc(15px * var(--font-scale, 1));
   color: #7A6C5A;
 }
 
@@ -75,7 +75,7 @@
 }
 
 .home-stat dt {
-  font-size: 12px;
+  font-size: calc(12px * var(--font-scale, 1));
   letter-spacing: 1px;
   color: #8B7A61;
 }
@@ -83,7 +83,7 @@
 .home-stat dd {
   margin: 0;
   font-family: 'Georgia', 'STSong', serif;
-  font-size: 44px;
+  font-size: calc(44px * var(--font-scale, 1));
   line-height: 1.2;
   color: var(--sage);
 }
@@ -97,7 +97,7 @@
   align-items: center;
   gap: 4px;
   margin-top: 8px;
-  font-size: 12px;
+  font-size: calc(12px * var(--font-scale, 1));
   color: #9B7960;
 }
 
@@ -151,13 +151,13 @@
 }
 
 .home-card h3 {
-  font-size: 19px;
+  font-size: calc(19px * var(--font-scale, 1));
   line-height: 1.6;
 }
 
 .home-card p {
   flex: 1;
-  font-size: 13px;
+  font-size: calc(13px * var(--font-scale, 1));
   line-height: 1.85;
   color: #8A7A66;
 }
@@ -166,7 +166,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 12px;
+  font-size: calc(12px * var(--font-scale, 1));
   color: #A07C5C;
 }
 
@@ -182,7 +182,7 @@
 }
 
 .home-lower .panel h2 {
-  font-size: 19px;
+  font-size: calc(19px * var(--font-scale, 1));
   line-height: 1.6;
 }
 
@@ -197,12 +197,12 @@
 
 .home-guide h2 {
   margin-bottom: 6px;
-  font-size: 19px;
+  font-size: calc(19px * var(--font-scale, 1));
 }
 
 .home-guide > p {
   margin-bottom: 18px;
-  font-size: 13px;
+  font-size: calc(13px * var(--font-scale, 1));
   color: #8A7A66;
 }
 
@@ -219,7 +219,7 @@
   display: flex;
   gap: 13px;
   align-items: flex-start;
-  font-size: 13px;
+  font-size: calc(13px * var(--font-scale, 1));
   line-height: 1.8;
   color: #6E6154;
 }
@@ -232,7 +232,7 @@
 
 .home-guide li strong {
   display: block;
-  font-size: 14px;
+  font-size: calc(14px * var(--font-scale, 1));
   color: var(--ink);
 }
 
@@ -243,7 +243,7 @@
   }
 
   .home-start-copy h2 {
-    font-size: 30px;
+    font-size: calc(30px * var(--font-scale, 1));
   }
 }
 
@@ -265,7 +265,7 @@
   }
 
   .home-start-copy h2 {
-    font-size: 25px;
+    font-size: calc(25px * var(--font-scale, 1));
   }
 
   .home-stat {
@@ -273,6 +273,6 @@
   }
 
   .home-stat dd {
-    font-size: 36px;
+    font-size: calc(36px * var(--font-scale, 1));
   }
 }

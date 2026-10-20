@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Check } from 'lucide-react';
 import { BrandMark } from '../brand-mark';
@@ -24,6 +24,7 @@ const loginState = config.apiMode === 'real'
 export function WelcomePage() {
   const navigate = useNavigate();
   const reducedMotion = useApp(state => state.snapshot?.preferences.reducedMotion ?? false);
+  const fontScale = useApp(state => state.snapshot?.preferences.fontScale ?? 1);
   const [loginOpen, setLoginOpen] = useState(false);
   const returning = readEntry() !== null;
 
@@ -32,7 +33,7 @@ export function WelcomePage() {
     navigate('/', { replace: true });
   };
 
-  return <div className={'welcome' + (reducedMotion ? ' reduce-motion' : '')}>
+  return <div className={'welcome' + (reducedMotion ? ' reduce-motion' : '')} style={{ '--font-scale': fontScale } as CSSProperties}>
     <Ambient variant="full" />
     <main className="welcome-main">
       <section className="welcome-intro">
