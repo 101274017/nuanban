@@ -46,15 +46,15 @@
 
 .welcome-lead { max-width: 520px; font-size: 16px; line-height: 1.9; color: #7A6C5A; }
 
-.welcome-scene-wrap { position: relative; margin-top: 4px; }
+.welcome-scene-wrap { position: relative; margin-top: 4px; max-width: 640px; }
 
 .login-scene { display: block; width: 100%; max-width: 640px; height: auto; overflow: visible; }
 
 .welcome-scene-note {
-  position: absolute; right: 4%; bottom: 24%;
+  position: absolute; left: 46%; bottom: 25%; transform: translateX(-50%) rotate(-2deg);
   padding: 8px 14px; border: 1px dashed #D9C3A6; border-radius: 13px;
   background: #FFFCF4; color: #8A6A4B; font-size: 13px; letter-spacing: .5px;
-  transform: rotate(-3deg); box-shadow: 0 8px 18px rgba(120, 95, 70, .08);
+  box-shadow: 0 8px 18px rgba(120, 95, 70, .08);
 }
 
 .welcome-proof {
@@ -114,8 +114,6 @@
 /* 场景微动效 */
 .scene-sun { transform-box: fill-box; transform-origin: center; animation: scene-sun 9s ease-in-out infinite; }
 
-.scene-tail { transform-box: fill-box; transform-origin: 88% 12%; animation: scene-tail 4.6s ease-in-out infinite; }
-
 .scene-steam {
   transform-box: fill-box; transform-origin: center bottom; opacity: 0;
   animation: scene-steam 5s ease-in-out infinite;
@@ -123,11 +121,7 @@
 
 .scene-steam + .scene-steam { animation-delay: 1.3s; }
 
-.scene-eyes { transform-box: fill-box; transform-origin: center; animation: scene-blink 7.5s ease-in-out infinite; }
-
 @keyframes scene-sun { 50% { transform: scale(1.045); } }
-
-@keyframes scene-tail { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(5deg); } }
 
 @keyframes scene-steam {
   0% { opacity: 0; transform: translateY(5px); }
@@ -135,7 +129,6 @@
   100% { opacity: 0; transform: translateY(-16px); }
 }
 
-@keyframes scene-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
 
 .reduce-motion .scene-steam { opacity: .4; }
 

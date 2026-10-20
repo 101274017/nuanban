@@ -1,6 +1,6 @@
 /**
- * 暖伴登录页场景插画：窗、暖阳、书桌、茶杯、盆栽和坐着的小桌宠。
- * 纯 SVG + CSS 微动效（阳光呼吸、蒸汽、尾巴、眨眼），不引入图片资源。
+ * 暖伴登录页场景插画：窗、暖阳、书桌、茶杯和盆栽。
+ * 纯 SVG + CSS 微动效（阳光呼吸、蒸汽），不引入图片资源。
  * 装饰性内容：aria-hidden，不进入读屏与 tab 顺序。
  */
 export function LoginScene() {
@@ -26,27 +26,11 @@ export function LoginScene() {
     </g>
 
     <g>
-      <path d="M128 248v-40" stroke="#7E8F6B" strokeWidth="4" strokeLinecap="round" />
-      <path d="M128 218c-18-5-25-21-20-32 14 0 25 12 27 27" fill="#9DAE87" />
-      <path d="M128 210c18-7 22-23 17-34-14 2-23 14-23 30" fill="#84986F" />
-      <rect x="108" y="242" width="40" height="28" rx="8" fill="#C98D66" />
-      <rect x="108" y="242" width="40" height="8" rx="4" fill="#B87C58" />
-    </g>
-
-    <g transform="translate(250 152)">
-      <ellipse cx="66" cy="94" rx="52" ry="9" fill="#503A23" opacity=".08" />
-      <path className="scene-tail" d="M96 78c24 2 17-31 8-21" fill="none" stroke="#D98347" strokeWidth="13" strokeLinecap="round" />
-      <path d="M34 78 24 100m74-22 11 21" stroke="#D98347" strokeWidth="12" strokeLinecap="round" />
-      <path d="M30 48c0-31 70-32 70 0 0 18-15 29-35 29-22 0-35-10-35-29" fill="#D98347" />
-      <path d="m18 38 5-29 20 17zm76-29 4 29 18-17z" fill="#D98347" />
-      <ellipse cx="24" cy="58" rx="7" ry="4" fill="#ECAC86" opacity=".7" />
-      <ellipse cx="106" cy="58" rx="7" ry="4" fill="#ECAC86" opacity=".7" />
-      <g className="scene-eyes">
-        <ellipse cx="52" cy="46" rx="4.5" ry="5.5" fill="#392A24" />
-        <ellipse cx="78" cy="46" rx="4.5" ry="5.5" fill="#392A24" />
-      </g>
-      <path d="m59 57 6 4 6-4" fill="#754330" />
-      <path d="M65 52v7m0 0q-8 8-15 0m15 0q8 8 15 0" fill="none" stroke="#754330" strokeWidth="2.8" strokeLinecap="round" />
+      <path d="M128 226v-40" stroke="#7E8F6B" strokeWidth="4" strokeLinecap="round" />
+      <path d="M128 196c-18-5-25-21-20-32 14 0 25 12 27 27" fill="#9DAE87" />
+      <path d="M128 188c18-7 22-23 17-34-14 2-23 14-23 30" fill="#84986F" />
+      <rect x="108" y="220" width="40" height="28" rx="8" fill="#C98D66" />
+      <rect x="108" y="220" width="40" height="8" rx="4" fill="#B87C58" />
     </g>
   </svg>;
 }
