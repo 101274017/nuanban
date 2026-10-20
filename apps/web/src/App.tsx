@@ -8,6 +8,7 @@ import { Pet, MuteButton } from './components';
 import { BrandMark } from './brand-mark';
 import { Ambient } from './ambient';
 import { readEntry } from './entry';
+import './motion.css';
 import { WelcomePage } from './pages/welcome';
 import { DesktopPetButton } from './desktop-pet-button';
 import { PetWorkspaceHeader, useDesktopWorkspace } from './pet-workspace';
@@ -55,7 +56,7 @@ export function App(){
     coordinator.start(1);
     return coordinator;
   }, []);
-  useEffect(()=>{setMenu(false);if(previousRoute.current === null){previousRoute.current=location.pathname;return;}if(previousRoute.current !== location.pathname){previousRoute.current=location.pathname;document.getElementById('main-content')?.focus();}},[location.pathname]);
+  useEffect(()=>{setMenu(false);if(previousRoute.current === null){previousRoute.current=location.pathname;return;}if(previousRoute.current !== location.pathname){previousRoute.current=location.pathname;const main=document.getElementById('main-content');main?.focus();const reduced=useApp.getState().snapshot?.preferences.reducedMotion === true || window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(main && !reduced)main.animate([{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'translateY(0)'}],{duration:240,easing:'cubic-bezier(.22,.61,.36,1)'});}},[location.pathname]);
   useEffect(()=>{
     const openReminder=(event: Event)=>{
       const detail=(event as CustomEvent<{deepLink?:unknown}>).detail;

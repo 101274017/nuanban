@@ -87,3 +87,21 @@
   .welcome-mark { width: 52px; height: 52px; }
   .welcome-foot { font-size: 11px; }
 }
+
+/* 入场：品牌 → 标题 → 说明 → 三条承诺 → 卡片，错峰淡入上浮。
+   backwards 让延迟期间保持初始态、结束后回到普通样式（减少动态时直接可见）。 */
+.welcome-brand { animation: rise-in .7s cubic-bezier(.22, .61, .36, 1) backwards; }
+.welcome-intro h1 { animation: rise-in .7s cubic-bezier(.22, .61, .36, 1) .06s backwards; }
+.welcome-lead { animation: rise-in .7s cubic-bezier(.22, .61, .36, 1) .12s backwards; }
+.welcome-promises li:nth-child(1) { animation: rise-in .7s cubic-bezier(.22, .61, .36, 1) .18s backwards; }
+.welcome-promises li:nth-child(2) { animation: rise-in .7s cubic-bezier(.22, .61, .36, 1) .28s backwards; }
+.welcome-promises li:nth-child(3) { animation: rise-in .7s cubic-bezier(.22, .61, .36, 1) .38s backwards; }
+.welcome-card { animation: rise-in .7s cubic-bezier(.22, .61, .36, 1) .42s backwards; }
+
+/* Logo 轻轻呼吸 */
+.welcome-mark { animation: mark-breathe 6s ease-in-out infinite; }
+
+@keyframes mark-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
