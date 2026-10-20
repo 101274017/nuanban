@@ -1,18 +1,15 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Eye, LockKeyhole, Square } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { BrandMark } from '../brand-mark';
 import { Ambient } from '../ambient';
+import { LoginScene } from '../login-scene';
 import { config } from '../composition';
 import { readEntry, writeEntry } from '../entry';
 import { useApp } from '../store';
 import './welcome.css';
 
-const promises = [
-  { icon: Eye, title: '本机优先', text: '不注册也会把学习记录留在这一台电脑上。' },
-  { icon: LockKeyhole, title: '不做假登录', text: '不收手机号、验证码或人脸，也不发假凭证。' },
-  { icon: Square, title: '随时可停', text: '每个讲解和共享流程都由你亲手结束。' },
-] as const;
+const proofs = ['不收手机号、验证码', '资料只存本机', '免费公益，不催促'] as const;
 
 const loginState = config.apiMode === 'real'
   ? {
@@ -40,22 +37,24 @@ export function WelcomePage() {
     <main className="welcome-main">
       <section className="welcome-intro">
         <p className="welcome-brand">
-          <BrandMark className="welcome-mark" size={64} />
+          <BrandMark className="welcome-mark" size={44} />
           <span><strong>暖伴</strong><small>陪你慢慢学会</small></span>
         </p>
-        <h1>先坐一会儿，<br />我们慢慢开始。</h1>
-        <p className="welcome-lead">不用注册也能用。笔记和待办只留在这一台电脑上，暖伴不会替你点任何按钮。</p>
-        <ul className="welcome-promises">
-          {promises.map(item => <li key={item.title}>
-            <item.icon size={20} aria-hidden="true" />
-            <div><strong>{item.title}</strong><p>{item.text}</p></div>
-          </li>)}
+        <h1>先坐一会儿，<br /><span className="welcome-h1-accent">我们慢慢开始。</span></h1>
+        <p className="welcome-lead">不用注册也能用。笔记和待办只留在这台电脑上，不会替你点按钮。</p>
+        <div className="welcome-scene-wrap">
+          <LoginScene />
+          <span className="welcome-scene-note">今天也可以只学一点点</span>
+        </div>
+        <ul className="welcome-proof">
+          {proofs.map(item => <li key={item}><Check size={14} aria-hidden="true" />{item}</li>)}
         </ul>
       </section>
 
       <section className="welcome-card" aria-label="进入暖伴">
+        <span className="welcome-status"><i aria-hidden="true" />本机模式 · 不上传</span>
         <h2>{returning ? '欢迎回来' : '进入暖伴'}</h2>
-        <p className="welcome-card-lead">{returning ? '上次是以游客身份进入的，可以继续。' : '选一种方式开始，之后随时可以换。'}</p>
+        <p className="welcome-card-lead">{returning ? '上次是以游客身份进入的，可以继续。' : '先用游客身份进来，笔记和待办只留在这台电脑。'}</p>
         <button className="button primary full" type="button" onClick={enterAsGuest}>
           {returning ? '继续以游客身份进入' : '游客模式，直接进入'}
         </button>

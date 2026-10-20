@@ -42,6 +42,8 @@ test.describe('第一次进入暖伴', () => {
     await expect(ambient).toHaveCount(1);
     await expect(page.locator('.ambient-sun')).toHaveCount(1);
     await expect(page.locator('.ambient-rays')).toHaveCount(1);
+    await expect(page.locator('.login-scene')).toHaveCount(1);
+    expect(await page.locator('.login-scene').getAttribute('aria-hidden')).toBe('true');
     const style = await ambient.evaluate(element => {
       const computed = getComputedStyle(element);
       return { pointerEvents: computed.pointerEvents, position: computed.position };
