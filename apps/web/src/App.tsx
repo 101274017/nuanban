@@ -1,11 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { NavLink, Route, Routes, Link, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, Route, Routes, Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { Home as HomeIcon, MessageCircle, BookOpen, CalendarCheck, HeartHandshake, PawPrint, Settings, ShieldCheck, Square, ArrowUpRight, Bell, X, Menu } from 'lucide-react';
 import { useApp, announce, safely } from './store';
 import { config, platform, services } from './composition';
 import { bindLifecycleEvents, LifecycleCoordinator, ReminderRuntime, type LifecycleCleanupReport } from '@nuanban/platform-ports';
 import { Pet, MuteButton } from './components';
 import { BrandMark } from './brand-mark';
+import { Ambient } from './ambient';
+import { readEntry } from './entry';
+import { WelcomePage } from './pages/welcome';
 import { DesktopPetButton } from './desktop-pet-button';
 import { PetWorkspaceHeader, useDesktopWorkspace } from './pet-workspace';
 import { HomePage, GuidePage } from './pages/core';
@@ -90,8 +93,11 @@ export function App(){
   if(!state.ready || workspace.mode === null)return <div className="loading-screen"><Pet/><h1>暖伴正在准备你的学习小天地…</h1></div>;
   if(!state.snapshot)return <div className="loading-screen"><h1>本地资料暂时无法打开</h1><p>{state.error}</p><button className="button primary" onClick={()=>window.location.reload()}>重新尝试</button></div>;
   const preferences=state.snapshot.preferences;
+  if(location.pathname === '/welcome')return <WelcomePage/>;
+  if(!petTool && location.pathname === '/' && readEntry() === null)return <Navigate to="/welcome" replace/>;
   const stop=()=>{window.dispatchEvent(new Event('nuanban:stop'));void platform.stopAll().catch(()=>useApp.setState({error:'本页流程已停止，但原生停止未确认。请检查系统权限；不会自动恢复。'}));announce('已停止本页讲解和教学，不会自动恢复。');};
   return <div className={'app mode-'+preferences.mode+(preferences.reducedMotion?' reduce-motion':'')+(petTool?' pet-tool-workspace':'')} style={{'--font-scale':preferences.fontScale,'--caption-size':preferences.captionSize+'px'} as React.CSSProperties}>
+    <Ambient/>
     {petTool&&<PetWorkspaceHeader/>}
     <a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus(); }}>跳到主要内容</a>
     <aside className={'sidebar'+(menu?' is-open':'')}><Link className="brand" to="/" aria-label="暖伴首页"><BrandMark className="brand-mark"/><div><strong>暖伴<span>NUANBAN</span></strong><small>陪你慢慢学会</small></div></Link><div className="sidebar-section-label">你的学习小天地</div><nav aria-label="主要导航">{navigation.map(item=><NavLink key={item.to} to={item.to} end={item.to==='/'} className={({isActive})=>'nav-item'+(isActive?' active':'')}><item.icon size={22}/><span>{item.label}</span></NavLink>)}<DesktopPetButton onOpened={()=>setMenu(false)}/></nav><div className="sidebar-bottom"><NavLink className="nav-item settings-nav" to="/settings"><Settings size={22}/>设置与隐私</NavLink><div className="sidebar-foot"><span className="online-dot"/>本机资料 · 真实模型接口</div></div></aside>

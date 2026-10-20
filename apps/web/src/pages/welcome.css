@@ -1,0 +1,89 @@
+/* 暖伴 · 欢迎/登录入口页 */
+.welcome {
+  position: relative; display: flex; flex-direction: column; min-height: 100vh;
+  background: linear-gradient(180deg, #FFFDF8 0%, #FBF3E7 100%);
+}
+
+.welcome-main {
+  position: relative; z-index: 1; flex: 1; width: 100%; max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(360px, .85fr);
+  gap: clamp(28px, 5vw, 72px); align-items: center;
+  padding: clamp(28px, 5vh, 64px) clamp(20px, 4vw, 48px);
+}
+
+.welcome-intro { display: flex; flex-direction: column; gap: 22px; }
+
+.welcome-brand { display: flex; align-items: center; gap: 14px; }
+
+.welcome-mark {
+  display: block; width: 64px; height: 64px;
+  filter: drop-shadow(0 8px 16px rgba(166, 75, 42, .18));
+}
+
+.welcome-brand strong { display: block; font-size: 30px; letter-spacing: 4px; line-height: 1.2; }
+
+.welcome-brand small { display: block; margin-top: 4px; font-size: 12px; letter-spacing: 2px; color: #8A7966; }
+
+.welcome-intro h1 {
+  font-family: 'STKaiti', 'KaiTi', 'Noto Serif CJK SC', serif;
+  font-size: clamp(32px, 3.4vw, 44px); line-height: 1.45; letter-spacing: 1px;
+}
+
+.welcome-lead { max-width: 520px; font-size: 16px; line-height: 1.9; color: #7A6C5A; }
+
+.welcome-promises { display: flex; flex-direction: column; gap: 16px; margin: 6px 0 0; padding: 0; list-style: none; }
+
+.welcome-promises li { display: flex; gap: 14px; align-items: flex-start; }
+
+.welcome-promises svg { flex: 0 0 auto; margin-top: 3px; color: #A0805F; }
+
+.welcome-promises strong { display: block; font-size: 15px; }
+
+.welcome-promises p { font-size: 13px; line-height: 1.8; color: #8A7A66; }
+
+.welcome-card {
+  display: flex; flex-direction: column; gap: 12px; padding: 32px;
+  border: 1px solid #E9DFCE; border-radius: 24px;
+  background: rgba(255, 253, 248, .94); box-shadow: 0 22px 48px rgba(120, 95, 70, .12);
+}
+
+.welcome-card h2 { font-size: 24px; }
+
+.welcome-card-lead { margin-bottom: 6px; font-size: 14px; line-height: 1.8; color: #8A7A66; }
+
+.welcome-card .button { width: 100%; }
+
+.welcome-login {
+  display: flex; flex-direction: column; gap: 8px; padding: 16px;
+  border: 1px solid #E7DED0; border-radius: 16px; background: #FBF5EA;
+  font-size: 13px; line-height: 1.8; color: #6E6154;
+}
+
+.welcome-login strong { font-size: 14px; color: #2D2521; }
+
+.welcome-login-safe { color: #8A7A66; }
+
+.welcome-login-link {
+  align-self: flex-start; font-weight: 600; color: var(--primary);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+
+.welcome-note { font-size: 12px; line-height: 1.8; color: #9A8A76; }
+
+.welcome-foot {
+  position: relative; z-index: 1; padding: 18px 24px 24px;
+  text-align: center; font-size: 12px; letter-spacing: 1px; color: #A79783;
+}
+
+@media (max-width: 1000px) {
+  .welcome-main { grid-template-columns: minmax(0, 1fr); align-items: start; gap: 32px; }
+  .welcome-intro h1 { font-size: clamp(28px, 5vw, 36px); }
+}
+
+@media (max-width: 760px) {
+  .welcome-main { padding: 24px 18px; }
+  .welcome-card { padding: 24px; border-radius: 20px; }
+  .welcome-brand strong { font-size: 26px; }
+  .welcome-mark { width: 52px; height: 52px; }
+  .welcome-foot { font-size: 11px; }
+}
